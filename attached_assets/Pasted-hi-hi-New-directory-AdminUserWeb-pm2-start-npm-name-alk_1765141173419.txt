@@ -1,0 +1,203 @@
+hi@hi:~/New directory/AdminUserWeb$ pm2 start npm --name "alkhat" -- start
+
+                        -------------
+
+__/\\\\\\\\\\\\\____/\\\\____________/\\\\____/\\\\\\\\\_____
+ _\/\\\/////////\\\_\/\\\\\\________/\\\\\\__/\\\///////\\\___
+  _\/\\\_______\/\\\_\/\\\//\\\____/\\\//\\\_\///______\//\\\__
+   _\/\\\\\\\\\\\\\/__\/\\\\///\\\/\\\/_\/\\\___________/\\\/___
+    _\/\\\/////////____\/\\\__\///\\\/___\/\\\________/\\\//_____
+     _\/\\\_____________\/\\\____\///_____\/\\\_____/\\\//________
+      _\/\\\_____________\/\\\_____________\/\\\___/\\\/___________
+       _\/\\\_____________\/\\\_____________\/\\\__/\\\\\\\\\\\\\\\_
+        _\///______________\///______________\///__\///////////////__
+
+
+                          Runtime Edition
+
+        PM2 is a Production Process Manager for Node.js applications
+                     with a built-in Load Balancer.
+
+                Start and Daemonize any application:
+                $ pm2 start app.js
+
+                Load Balance 4 instances of api.js:
+                $ pm2 start api.js -i 4
+
+                Monitor in production:
+                $ pm2 monitor
+
+                Make pm2 auto-boot at server restart:
+                $ pm2 startup
+
+                To go further checkout:
+                http://pm2.io/
+
+
+                        -------------
+
+[PM2] Spawning PM2 daemon with pm2_home=/home/hi/.pm2
+[PM2] PM2 Successfully daemonized
+[PM2] Starting /usr/bin/npm in fork_mode (1 instance)
+[PM2] Done.
+┌────┬────────────────────┬──────────┬──────┬───────────┬──────────┬──────────┐
+│ id │ name               │ mode     │ ↺    │ status    │ cpu      │ memory   │
+├────┼────────────────────┼──────────┼──────┼───────────┼──────────┼──────────┤
+│ 0  │ alkhat             │ fork     │ 0    │ online    │ 0%       │ 36.9mb   │
+└────┴────────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘
+hi@hi:~/New directory/AdminUserWeb$ pm2 startup
+[PM2] Init System found: systemd
+[PM2] To setup the Startup Script, copy/paste the following command:
+sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u hi --hp /home/hi
+hi@hi:~/New directory/AdminUserWeb$ sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u hi --hp /home/hi
+
+                        -------------
+
+__/\\\\\\\\\\\\\____/\\\\____________/\\\\____/\\\\\\\\\_____
+ _\/\\\/////////\\\_\/\\\\\\________/\\\\\\__/\\\///////\\\___
+  _\/\\\_______\/\\\_\/\\\//\\\____/\\\//\\\_\///______\//\\\__
+   _\/\\\\\\\\\\\\\/__\/\\\\///\\\/\\\/_\/\\\___________/\\\/___
+    _\/\\\/////////____\/\\\__\///\\\/___\/\\\________/\\\//_____
+     _\/\\\_____________\/\\\____\///_____\/\\\_____/\\\//________
+      _\/\\\_____________\/\\\_____________\/\\\___/\\\/___________
+       _\/\\\_____________\/\\\_____________\/\\\__/\\\\\\\\\\\\\\\_
+        _\///______________\///______________\///__\///////////////__
+
+
+                          Runtime Edition
+
+        PM2 is a Production Process Manager for Node.js applications
+                     with a built-in Load Balancer.
+
+                Start and Daemonize any application:
+                $ pm2 start app.js
+
+                Load Balance 4 instances of api.js:
+                $ pm2 start api.js -i 4
+
+                Monitor in production:
+                $ pm2 monitor
+
+                Make pm2 auto-boot at server restart:
+                $ pm2 startup
+
+                To go further checkout:
+                http://pm2.io/
+
+
+                        -------------
+
+[PM2] Init System found: systemd
+Platform systemd
+Template
+[Unit]
+Description=PM2 process manager
+Documentation=https://pm2.keymetrics.io/
+After=network.target
+
+[Service]
+Type=forking
+User=hi
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/bin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+Environment=PM2_HOME=/home/hi/.pm2
+PIDFile=/home/hi/.pm2/pm2.pid
+Restart=on-failure
+
+ExecStart=/usr/lib/node_modules/pm2/bin/pm2 resurrect
+ExecReload=/usr/lib/node_modules/pm2/bin/pm2 reload all
+ExecStop=/usr/lib/node_modules/pm2/bin/pm2 kill
+
+[Install]
+WantedBy=multi-user.target
+
+Target path
+/etc/systemd/system/pm2-hi.service
+Command list
+[ 'systemctl enable pm2-hi' ]
+[PM2] Writing init configuration in /etc/systemd/system/pm2-hi.service
+[PM2] Making script booting at startup...
+[PM2] [-] Executing: systemctl enable pm2-hi...
+Created symlink /etc/systemd/system/multi-user.target.wants/pm2-hi.service → /etc/systemd/system/pm2-hi.service.
+[PM2] [v] Command successfully executed.
++---------------------------------------+
+[PM2] Freeze a process list on reboot via:
+$ pm2 save
+
+[PM2] Remove init script via:
+$ pm2 unstartup systemd
+hi@hi:~/New directory/AdminUserWeb$ pm2 logs alkhat
+[TAILING] Tailing last 15 lines for [alkhat] process (change the value with --lines option)
+/home/hi/.pm2/logs/alkhat-out.log last 15 lines:
+0|alkhat   | > rest-express@1.0.0 start
+0|alkhat   | > NODE_ENV=production node dist/index.cjs
+0|alkhat   |
+0|alkhat   |
+0|alkhat   | > rest-express@1.0.0 start
+0|alkhat   | > NODE_ENV=production node dist/index.cjs
+0|alkhat   |
+0|alkhat   |
+0|alkhat   | > rest-express@1.0.0 start
+0|alkhat   | > NODE_ENV=production node dist/index.cjs
+0|alkhat   |
+0|alkhat   |
+0|alkhat   | > rest-express@1.0.0 start
+0|alkhat   | > NODE_ENV=production node dist/index.cjs
+0|alkhat   |
+
+/home/hi/.pm2/logs/alkhat-error.log last 15 lines:
+0|alkhat   | Node.js v20.19.6
+0|alkhat   | node:internal/modules/cjs/loader:1210
+0|alkhat   |   throw err;
+0|alkhat   |   ^
+0|alkhat   |
+0|alkhat   | Error: Cannot find module '/home/hi/New directory/AdminUserWeb/dist/index.cjs'
+0|alkhat   |     at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+0|alkhat   |     at Module._load (node:internal/modules/cjs/loader:1038:27)
+0|alkhat   |     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+0|alkhat   |     at node:internal/main/run_main_module:28:49 {
+0|alkhat   |   code: 'MODULE_NOT_FOUND',
+0|alkhat   |   requireStack: []
+0|alkhat   | }
+0|alkhat   |
+0|alkhat   | Node.js v20.19.6
+
+pm2 stop alkhat
+^C
+hi@hi:~/New directory/AdminUserWeb$ pm2 stop alkhat
+[PM2] Applying action stopProcessId on app [alkhat](ids: [ 0 ])
+[PM2] [alkhat](0) ✓
+┌────┬────────────────────┬──────────┬──────┬───────────┬──────────┬──────────┐
+│ id │ name               │ mode     │ ↺    │ status    │ cpu      │ memory   │
+├────┼────────────────────┼──────────┼──────┼───────────┼──────────┼──────────┤
+│ 0  │ alkhat             │ fork     │ 15   │ stopped   │ 0%       │ 0b       │
+└────┴────────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘
+hi@hi:~/New directory/AdminUserWeb$ npm run build
+
+> rest-express@1.0.0 build
+> tsx script/build.ts
+
+building client...
+vite v7.1.12 building for production...
+✓ 1899 modules transformed.
+rendering chunks (1)...[meta-images] no Replit deployment domain found, skipping meta tag updates
+../dist/public/index.html                                              1.47 kB │ gzip:   0.60 kB
+../dist/public/assets/logo_imresizer_(1)_1764805116719-0DzAPAIy.jpg   25.68 kB
+../dist/public/assets/Log-in_Background_1764800039054-DKwPmvtl.jpg   351.29 kB
+../dist/public/assets/logo_1764504161984-B3Xipw-A.png                899.58 kB
+../dist/public/assets/index-BN9lhOhv.css                             104.07 kB │ gzip:  16.79 kB
+../dist/public/assets/index-CXXD0R-G.js                              591.11 kB │ gzip: 176.34 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 6.93s
+building server...
+
+  dist/index.cjs  1.1mb ⚠️
+
+⚡ Done in 197ms
+hi@hi:~/New directory/AdminUserWeb$

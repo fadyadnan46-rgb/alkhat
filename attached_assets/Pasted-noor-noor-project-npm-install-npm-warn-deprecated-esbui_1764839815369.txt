@@ -1,0 +1,137 @@
+noor@noor:~/project$ npm install
+npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+
+added 461 packages, and audited 462 packages in 11s
+
+43 packages are looking for funding
+  run `npm fund` for details
+
+6 vulnerabilities (2 low, 4 moderate)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+noor@noor:~/project$ export DATABASE_URL="postgresql://alkhat:Hj*r7G_pQz9@localhost:5432/alkhat_naqqil"
+export SESSION_SECRET="R5yG7kF2oP4sD8hX1jL6aQ9wZ3eC0vB4n"
+export NODE_ENV=production
+noor@noor:~/project$ npm run db:push
+
+
+> rest-express@1.0.0 db:push
+> drizzle-kit push
+
+No config path provided, using default 'drizzle.config.ts'
+Reading config file '/home/noor/project/drizzle.config.ts'
+Using 'pg' driver for database querying
+[⣷] Pulling schema from database...
+error: password authentication failed for user "alkhat"
+    at /home/noor/project/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.query (/home/noor/project/node_modules/drizzle-kit/bin.cjs:80601:26)
+    at async fromDatabase2 (/home/noor/project/node_modules/drizzle-kit/bin.cjs:19253:25) {
+  length: 102,
+  severity: 'FATAL',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'auth.c',
+  line: '331',
+  routine: 'auth_failed'
+}
+noor@noor:~/project$ npx tsx server/seed.ts
+
+🌱 Starting database seed...
+❌ Seed failed: ErrorEvent {
+  [Symbol(kTarget)]: WebSocket {
+    _events: [Object: null prototype] {
+      error: [Function],
+      message: [Function],
+      close: [Function],
+      open: [Function]
+    },
+    _eventsCount: 4,
+    _maxListeners: undefined,
+    _binaryType: 'arraybuffer',
+    _closeCode: 1006,
+    _closeFrameReceived: false,
+    _closeFrameSent: false,
+    _closeMessage: <Buffer >,
+    _closeTimer: null,
+    _errorEmitted: true,
+    _extensions: {},
+    _paused: false,
+    _protocol: '',
+    _readyState: 3,
+    _receiver: null,
+    _sender: null,
+    _socket: null,
+    _bufferedAmount: 0,
+    _isServer: false,
+    _redirects: 0,
+    _autoPong: true,
+    _url: 'wss://localhost/v2',
+    _req: null,
+    [Symbol(shapeMode)]: false,
+    [Symbol(kCapture)]: false
+  },
+  [Symbol(kType)]: 'error',
+  [Symbol(kError)]: Error: connect ECONNREFUSED 127.0.0.1:443
+      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1611:16) {
+    errno: -111,
+    code: 'ECONNREFUSED',
+    syscall: 'connect',
+    address: '127.0.0.1',
+    port: 443
+  },
+  [Symbol(kMessage)]: 'connect ECONNREFUSED 127.0.0.1:443'
+}
+noor@noor:~/project$ npm run build
+npm start
+
+> rest-express@1.0.0 build
+> tsx script/build.ts
+
+building client...
+vite v7.1.12 building for production...
+✓ 1898 modules transformed.
+rendering chunks (1)...[meta-images] no Replit deployment domain found, skipping meta tag updates
+../dist/public/index.html                                              1.47 kB │ gzip:   0.60 kB
+../dist/public/assets/logo_imresizer_(1)_1764805116719-0DzAPAIy.jpg   25.68 kB
+../dist/public/assets/Log-in_Background_1764800039054-DKwPmvtl.jpg   351.29 kB
+../dist/public/assets/logo_1764504161984-B3Xipw-A.png                899.58 kB
+../dist/public/assets/index-C4MQaeVC.css                             100.96 kB │ gzip:  16.31 kB
+../dist/public/assets/index-CXkbrNWY.js                              572.24 kB │ gzip: 170.95 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 6.31s
+building server...
+
+  dist/index.cjs  1.2mb ⚠️
+
+⚡ Done in 250ms
+
+> rest-express@1.0.0 start
+> NODE_ENV=production node dist/index.cjs
+
+Warning: connect.session() MemoryStore is not
+designed for a production environment, as it will leak
+memory, and will not scale past a single process.
+12:11:13 PM [express] serving on port 5000
+12:11:29 PM [express] POST /api/auth/login 500 in 79ms :: {"error":"Internal server error"}

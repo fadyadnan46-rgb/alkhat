@@ -1,0 +1,102 @@
+noor@noor:~/project$ sudo -u postgres psql -d alkhat_naqqil
+psql (16.11 (Ubuntu 16.11-0ubuntu0.24.04.1))
+Type "help" for help.
+
+alkhat_naqqil=# GRANT ALL ON SCHEMA public TO alkhat;
+
+GRANT
+alkhat_naqqil=# \q
+noor@noor:~/project$ npm install
+
+up to date, audited 365 packages in 2s
+
+26 packages are looking for funding
+  run `npm fund` for details
+
+2 low severity vulnerabilities
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+noor@noor:~/project$ export DATABASE_URL="postgresql://alkhat:Hj*r7G_pQz9@localhost:5432/alkhat_naqqil"
+export SESSION_SECRET="R5yG7kF2oP4sD8hX1jL6aQ9wZ3eC0vB4n"
+export NODE_ENV=production
+noor@noor:~/project$ npm run db:push
+
+> rest-express@1.0.0 db:push
+> drizzle-kit push
+
+sh: 1: drizzle-kit: not found
+noor@noor:~/project$ npm run db:push
+npx tsx server/seed.ts
+npm run build
+npm start
+
+> rest-express@1.0.0 db:push
+> drizzle-kit push
+
+sh: 1: drizzle-kit: not found
+Need to install the following packages:
+tsx@4.21.0
+Ok to proceed? (y) y
+
+🌱 Starting database seed...
+❌ Seed failed: ErrorEvent {
+  [Symbol(kTarget)]: WebSocket {
+    _events: [Object: null prototype] {
+      error: [Function],
+      message: [Function],
+      close: [Function],
+      open: [Function]
+    },
+    _eventsCount: 4,
+    _maxListeners: undefined,
+    _binaryType: 'arraybuffer',
+    _closeCode: 1006,
+    _closeFrameReceived: false,
+    _closeFrameSent: false,
+    _closeMessage: <Buffer >,
+    _closeTimer: null,
+    _errorEmitted: true,
+    _extensions: {},
+    _paused: false,
+    _protocol: '',
+    _readyState: 3,
+    _receiver: null,
+    _sender: null,
+    _socket: null,
+    _bufferedAmount: 0,
+    _isServer: false,
+    _redirects: 0,
+    _autoPong: true,
+    _url: 'wss://localhost/v2',
+    _req: null,
+    [Symbol(shapeMode)]: false,
+    [Symbol(kCapture)]: false
+  },
+  [Symbol(kType)]: 'error',
+  [Symbol(kError)]: Error: connect ECONNREFUSED 127.0.0.1:443
+      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1611:16) {
+    errno: -111,
+    code: 'ECONNREFUSED',
+    syscall: 'connect',
+    address: '127.0.0.1',
+    port: 443
+  },
+  [Symbol(kMessage)]: 'connect ECONNREFUSED 127.0.0.1:443'
+}
+
+> rest-express@1.0.0 build
+> tsx script/build.ts
+
+sh: 1: tsx: not found
+
+> rest-express@1.0.0 start
+> NODE_ENV=production node dist/index.cjs
+
+Warning: connect.session() MemoryStore is not
+designed for a production environment, as it will leak
+memory, and will not scale past a single process.
+12:34:55 PM [express] serving on port 5000
+12:35:09 PM [express] POST /api/auth/login 500 in 70ms :: {"error":"Internal server error"}
